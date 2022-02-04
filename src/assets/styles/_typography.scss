@@ -1,0 +1,56 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $font-family__primary;
+    font-weight: $font-weight__regular;
+    font-size: 14px;
+    color: $color-white;
+    height: 100%;
+}
+
+h1,
+h2,
+h3 {
+    color: $color-white;
+    margin: 0;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: $font-weight__bold;
+    line-height: 29px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: $font-weight__bold;
+    line-height: 21px;
+}
+
+
+input,
+select,
+button {
+    font-family: $font-family__primary;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.4px;
+}
+
+small {
+    font-size: 10px;
+}
+
+p {
+    margin: 0;
+    letter-spacing: 1.2px;
+}
+
+button {
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
