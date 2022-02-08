@@ -1,4 +1,4 @@
-# vue-food-delivery
+# Food delivery
 
 ## Project setup
 ```

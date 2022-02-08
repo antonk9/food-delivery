@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: $font-family__primary;
-    font-weight: $font-weight__regular;
+    font-weight: $font-weight__medium;
     font-size: 14px;
     color: $color-white;
     height: 100%;
@@ -38,6 +38,25 @@ button {
     letter-spacing: -0.4px;
 }
 
+input {
+    font-weight: $font-weight__medium;
+    color: $color-black;
+
+    &[type='text'] {
+        border-radius: 23px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &::placeholder {
+        color: rgba($color-black, 0.6);
+    }
+}
+
 small {
     font-size: 10px;
 }
@@ -53,4 +72,8 @@ button {
     &:hover {
         cursor: pointer;
     }
+}
+
+a {
+    text-decoration: none;
 }
