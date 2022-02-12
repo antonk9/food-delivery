@@ -1,25 +1,36 @@
 <template>
-	<Carousel :items-to-show="2.1" snapAlign="start" :wrap-around="true">
-		<template #slides>
-			<Slide v-for="product in products" :key="product.id">
-				<product-item :product="product" />
-			</Slide>
-		</template>
-  </Carousel>
+	<div class="products-new">
+			<div class="products-new__header">
+				<h2>New product</h2>
+				<c-button styleType="small">See All</c-button>
+			</div>
+			<swiper 
+				:spaceBetween="10"
+				:slidesPerView="'auto'"
+			>
+				<template #slides>
+					<swiper-slide v-for="product in products" :key="product.id">
+						<product-item :product="product" />
+					</swiper-slide>
+				</template>
+			</swiper>
+	</div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { Carousel, Slide } from 'vue3-carousel';
 import ProductItem from '@/components/ProductItem.vue';
 import ProductItemType from '@/types/ProductItemType';
-import 'vue3-carousel/dist/carousel.css';
+import cButton from '@/components/ui/cButton.vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import "swiper/swiper-bundle.css";
 
 export default defineComponent({
 	components: {
-    Carousel,
-    Slide,
-		ProductItem
+    Swiper,
+		SwiperSlide,
+		ProductItem,
+		cButton
   },
   props: {
 		products: {
@@ -27,9 +38,31 @@ export default defineComponent({
 			required: true
 		}
   },
+	data(){
+		return {
+			swiperOptions: {
+				loop: true,
+			}	
+		}
+	},
 })
 </script>
 
 <style lang="scss" scoped>
-	
+	.products-new {
+		padding: 25px 20px;
+
+		&__header {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 16px;
+
+			h2 { 
+				color: $color-black;
+			}
+		}
+	}
+	.swiper-slide {
+		width: 160px;
+	}
 </style>

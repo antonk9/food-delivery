@@ -1,30 +1,31 @@
 <template>
-	<Carousel :items-to-show="1.5" snapAlign="start" :wrap-around="true">
-		<template #slides>
-			<Slide v-for="item in items" :key="item.id" :style="`background-image:url(${item.src})`">
-				<div class="carousel__item">
-					<label>{{ item.label }}</label>
-					<c-button class="carousel__item-button" styleType="transparent" @doClick="routeTo(item.storeLink)">
-						{{ item.buttonText }}
-					</c-button>
-				</div>
-			</Slide>
-		</template>
-  </Carousel>
+	<swiper 
+		:slidesPerView="'auto'"
+		:spaceBetween="10"
+		class="carousel">
+		<swiper-slide v-for="item in items" :key="item.id" :style="`background-image:url(${item.src})`" class="carousel__slide">
+			<div class="carousel__item">
+				<label>{{ item.label }}</label>
+				<c-button class="carousel__item-button" styleType="transparent" @doClick="routeTo(item.storeLink)">
+					{{ item.buttonText }}
+				</c-button>
+			</div>
+		</swiper-slide>
+  </swiper>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { Carousel, Slide } from 'vue3-carousel';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 import { useRouter } from 'vue-router';
 import cButton from '@/components/ui/cButton.vue';
 import CarouselStoresTypeItem from '@/types/CarouselStoresType';
-import 'vue3-carousel/dist/carousel.css';
+import "swiper/swiper-bundle.css";
 
 export default defineComponent({
 	components: {
-    Carousel,
-    Slide,
+    Swiper,
+		SwiperSlide,
 		cButton
   },
   props: {
@@ -50,13 +51,18 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 	.carousel {
+		margin: 11px 16px 16px 16px;
+
 		&__slide {
 			width: 302px !important;
 			height: 165px;
 			display: block;
 			background-repeat: no-repeat;
-			margin: 11px 0 16px 16px;
 			border-radius: 7px;
+
+			&:hover {
+				cursor: pointer;
+			}
 		}
 
 		&__item {
@@ -77,5 +83,9 @@ export default defineComponent({
 				width: 200px;
 			}
 		}
+	}
+
+	.swiper-slide {
+		width: 302px;
 	}
 </style>

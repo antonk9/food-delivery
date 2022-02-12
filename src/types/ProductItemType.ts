@@ -14,7 +14,7 @@ export default interface ProductItemType {
 	id: string;
 	title: string;
 	src: string;
-  imageSrc: string;
+	imageSrc: string;
 	isNew: boolean;
 	isPopular: boolean;
 	store: ItemStore;

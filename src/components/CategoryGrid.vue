@@ -49,7 +49,7 @@ export default defineComponent({
 
 			&-title {
 				font-size: 11px;
-				font-weight: $font-weight__semi-bold;
+				font-weight: $font-weight__semibold;
 			}
 		}
 	}

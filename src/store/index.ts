@@ -8,7 +8,33 @@ import { storeModule } from '@/store/storeModule';
 export default createStore({
   state: {
     banneritems: [],
-    productCategories: []
+    productCategories: [],
+    listItems: [{
+      'id': '1',
+      'icon': 'icon-home',
+      'label': 'Home',
+      'url': '/'
+    }, {
+      'id': '2',
+      'icon': 'icon-search',
+      'label': 'Browse',
+      'url': '/#'
+    }, {
+      'id': '3',
+      'icon': 'icon-store',
+      'label': 'Store',
+      'url': '/stores'
+    }, {
+      'id': '4',
+      'icon': 'icon-order',
+      'label': 'Order history',
+      'url': '/orders'
+    }, {
+      'id': '5',
+      'icon': 'icon-profile',
+      'label': 'Profile',
+      'url': '/user-profile'
+    }]
   },
   mutations: {
     setCarouselStoreData(state, payload) {

@@ -5,14 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve --host localhost",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
+    "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "swiper": "^6.3.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
-    "vue3-carousel": "^0.1.36",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {

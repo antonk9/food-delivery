@@ -1,0 +1,18 @@
+@mixin default-black {
+	line-height: 17px;
+	font-size: 14px;
+	font-weight: $font-weight__medium;
+	color: $color-black;
+}
+
+@mixin default-black-semibold {
+	@include default-black();
+	font-weight: $font-weight__medium;
+}
+
+@mixin default-black-small {
+	line-height: 12px;
+	font-size: 10px;
+	font-weight: $font-weight__regular;
+	color: $color-black;
+}

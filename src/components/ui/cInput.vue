@@ -1,7 +1,7 @@
 <template>
 	<div :class="['field-input', {'field-input__with-icon': icon}]">
 		<i :class="icon" v-if="icon" ></i>
-		<input type="text" :placeholder="placeholder" @input="searchAction" />
+		<input data-testid="input" type="text" :placeholder="placeholder" @input="searchAction" />
 	</div>
 </template>
 
