@@ -1,4 +1,4 @@
-export default interface CarouselStoresTypeItem {
+export default interface CarouselStoresBanner {
 	id: string;
 	buttonText: string;
 	label: string;

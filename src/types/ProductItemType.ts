@@ -5,18 +5,36 @@ export interface ItemStore {
 }
 
 export interface ItemPrice {
-	priceNormal: string;
-	priceOld: string;
-	priceNew: string;
+	priceNormal: number;
+	priceOld: number;
+	priceNew: number;
+}
+
+export interface ItemDetails {
+	attr: string;
+	val: string;
+}
+
+export interface ItemAdditionalDetails {
+	deliveryDetails: string[];
+}
+
+export interface ItemImage {
+	small: string;
+	large: string;
 }
 
 export default interface ProductItemType {
 	id: string;
 	title: string;
 	src: string;
-	imageSrc: string;
+	images: ItemImage;
 	isNew: boolean;
 	isPopular: boolean;
+	categoryId: string;
 	store: ItemStore;
 	price: ItemPrice;
+	description: string;
+	details: ItemDetails[];
+	additionalDetails: ItemAdditionalDetails;
 }

@@ -3,8 +3,8 @@
 		<router-link 
 			v-for="category in productCategories" 
 			:key="category.id" 
-			:to="category.categoryLink"
-			:style="`background-image:url(${category.src})`"
+			:to="{name: 'categories', params: { categoryId: category.id }}"
+			:style="`background-image:url(${category.backgroundSrc})`"
 			class="product-categories-grid__item">
 			<p class="product-categories-grid__item-title">{{ category.title }}</p>
 		</router-link>

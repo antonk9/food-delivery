@@ -1,6 +1,6 @@
 export default interface ProductCategoriesType {
 	id: string;
 	title: string;
-	src: string;
+	backgroundSrc: string;
   categoryLink: string;
 }

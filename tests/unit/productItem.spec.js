@@ -22,7 +22,10 @@ describe('Product item item', () => {
 				id: '1',
 				title: 'Soft drink',
 				src: '/',
-				imageSrc: require('@/assets/images/soft-drink.png'),
+				images: {
+					small: require('@/assets/images/product-soft-drink.png'),
+					large: require('@/assets/images/product-soft-drink-large.png')
+				},
 				isNew: true,
 				isPopular: false,
 				store: {
@@ -30,7 +33,24 @@ describe('Product item item', () => {
 					label: 'Tradly Store',
 				},
 				price: {
-					priceNormal: '8'
+					priceNormal: 8
+				},
+				description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lobortis cras placerat diam ipsum ut. Nisi vel adipiscing massa bibendum diam. Suspendisse mattis dui maecenas duis mattis. Mattis aliquam at arcu, semper nunc, venenatis et pellentesque eu. Id tristique maecenas tristique habitasse eu elementum sed. Aliquam eget lacus, arcu, adipiscing eget feugiat in dolor sagittis.Non commodo, a justo massa porttitor sed placerat in. Orci tristique etiam tempus sed. Mi varius morbi egestas dictum tempor nisl. In ',
+				details: [{
+					attr: 'Condition',
+					val: 'Organic'
+				},{
+					attr: 'Price Type',
+					val: 'Fixed'
+				},{
+					attr: 'Category',
+					val: 'Beverages'
+				},{
+					attr: 'Location',
+					val: 'Kualalumpur, Malaysia'
+				}],
+				additionalDetails: {
+					deliveryDetails: ['Home Delivery Available', 'Cash On Delivery']
 				}
 			}
 		}

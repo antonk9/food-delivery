@@ -1,7 +1,7 @@
 <template>
 	<div class="product-item">
-		<router-link :to="product.src">
-			<div class="product-item__image" :style="`background-image:url(${product.imageSrc})`"></div>
+		<div @click="productClick(product.id)">
+			<div class="product-item__image" :style="`background-image:url(${product.images.small})`"></div>
 			<div class="product-item__details">
 				<h3 class="product-item__title">{{ product.title }}</h3>
 				<div class="product-item__store">
@@ -18,19 +18,39 @@
 					</span>
 				</div>
 			</div>
-		</router-link>
+		</div>
 	</div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import ProductItemType from '@/types/ProductItemType';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
 export default defineComponent({
 	props: {
 		product: {
 			type: Object as PropType<ProductItemType>,
 			required: true
+		}
+	},
+	setup() {
+		const router = useRouter();
+		const store = useStore();
+
+
+		const productClick = productId => {
+			store.dispatch('products/defineCurrentProduct', productId)
+
+			router.push({
+				name: 'product',
+				params: {productId: productId}
+			})
+		}
+
+		return {
+			productClick
 		}
 	}
 })
@@ -44,9 +64,14 @@ export default defineComponent({
 		border: 1px solid rgba($color-black, 0.1);
 		width: 100%;
 
+		&:hover {
+			cursor: pointer;
+		}
+
 		&__image {
 			display: block;
-			background-repeat: none repeat;
+			background-repeat: no-repeat;
+			background-size: cover;
 			height: 127px;
 			width: 100%;
 		}

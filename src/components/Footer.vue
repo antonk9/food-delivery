@@ -12,18 +12,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, PropType } from 'vue';
 import { useStore } from 'vuex';
+import FooterNavigation from '@/types/FooterNavigation'
 
 export default defineComponent({
-	components: {
-		
-	},
+	components: {},
 	setup() {
 		const store = useStore();
 
 		return {
-			listItems: computed(() => store.state.listItems)
+			listItems: computed(() => store.state.listItems as PropType<FooterNavigation>)
 		}
 	}
 })

@@ -2,11 +2,9 @@ html,
 body {
     margin: 0;
     padding: 0;
-    font-family: $font-family__primary;
-    font-weight: $font-weight__medium;
-    font-size: 14px;
-    color: $color-white;
     height: 100%;
+    @include default-black();
+    font-family: $font-family__primary;
 }
 
 h1,

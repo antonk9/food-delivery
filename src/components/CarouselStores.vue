@@ -1,17 +1,18 @@
 <template>
-	<swiper 
-		:slidesPerView="'auto'"
-		:spaceBetween="10"
-		class="carousel">
-		<swiper-slide v-for="item in items" :key="item.id" :style="`background-image:url(${item.src})`" class="carousel__slide">
-			<div class="carousel__item">
-				<label>{{ item.label }}</label>
-				<c-button class="carousel__item-button" styleType="transparent" @doClick="routeTo(item.storeLink)">
-					{{ item.buttonText }}
-				</c-button>
+	<div class="carousel-stores">
+		<div class="carousel-stores__header">
+				<h2>Stores to follow</h2>
+				<c-button styleType="small-white">View all</c-button>
 			</div>
-		</swiper-slide>
-  </swiper>
+			<swiper 
+				:spaceBetween="10"
+				:slidesPerView="'auto'"
+			>
+				<swiper-slide v-for="store in stores" :key="store.id">
+					<store-item :store="store" />
+				</swiper-slide>
+			</swiper>
+	</div>
 </template>
 
 <script lang="ts">
@@ -19,18 +20,20 @@ import { defineComponent, PropType } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { useRouter } from 'vue-router';
 import cButton from '@/components/ui/cButton.vue';
-import CarouselStoresTypeItem from '@/types/CarouselStoresType';
+import StoreType from '@/types/StoreType';
+import StoreItem from '@/components/StoreItem.vue'
 import "swiper/swiper-bundle.css";
 
 export default defineComponent({
 	components: {
     Swiper,
 		SwiperSlide,
-		cButton
+		cButton,
+		StoreItem
   },
   props: {
-		items: {
-			type: Array as PropType<CarouselStoresTypeItem[]>,
+		stores: {
+			type: Array as PropType<StoreType[]>,
 			required: true
 		}
   },
@@ -50,42 +53,34 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-	.carousel {
-		margin: 11px 16px 16px 16px;
 
-		&__slide {
-			width: 302px !important;
-			height: 165px;
-			display: block;
-			background-repeat: no-repeat;
-			border-radius: 7px;
+.carousel-stores {
+	padding: 22px 20px;
+	margin-top: 20px;
+	position: relative;
 
-			&:hover {
-				cursor: pointer;
-			}
-		}
-
-		&__item {
-			padding: 17px;
-			text-align: left;
-
-			&-button {
-				text-transform: uppercase;
-				font-size: 12px;
-				font-weight: $font-weight__bold;
-				letter-spacing: 0.73px;
-			}
-
-			label {
-				margin: 35px 0 17px;
-				display: block;
-				text-transform: uppercase;
-				width: 200px;
-			}
-		}
+	&:before {
+		content: '';
+		background-color: $color-green;
+		height: 184px;
+		width: 100%;
+		display: block;
+    position: absolute;
+    left: 0;
 	}
 
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 16px;
+		z-index: 1;
+    position: relative;
+    margin-top: 21px;
+	}
+}
+	
 	.swiper-slide {
-		width: 302px;
+		width: 160px;
+		min-height: 200px;
 	}
 </style>

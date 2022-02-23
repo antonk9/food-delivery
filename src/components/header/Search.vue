@@ -8,16 +8,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import cInput from '@/components/ui/cInput.vue'
+import { defineComponent } from 'vue';
+import { useStore } from 'vuex';
+import cInput from '@/components/ui/cInput.vue';
 
 export default defineComponent({
 	components: {
 		cInput
 	},
 	setup() {
+		const store = useStore();
+
 		function doSearch(input: string) {
-			console.log('search:', input)
+			store.dispatch('products/filteredProducts', input)
 		}
 
 		return {

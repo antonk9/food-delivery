@@ -1,25 +1,38 @@
 <template>
 	<header>
 		<div class="header-top">
-			<SectionTitle title="Groceries" />
+			<section-title title="Groceries" />
 			<i class="icon-heart-filled"></i>
-			<i class="icon-cart"></i>
+			<i class="icon-cart">
+				<span class="cart-qty" v-if="cartProductsQty">{{ cartProductsQty }}</span>
+			</i>
 		</div>
 		<div class="header-bottom">
-			<Search />
+			<search v-if="route.name == 'categories'" />
 		</div>
 	</header>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
+import { useStore } from 'vuex';
 import SectionTitle from '@/components/header/SectionTitle.vue'
 import Search from '@/components/header/Search.vue'
+import { useRoute } from 'vue-router'
 
 export default defineComponent({
 	components: {
 		SectionTitle,
 		Search
+	},
+	setup() {
+		const route = useRoute();
+		const store = useStore();
+
+		return{
+			route,
+			cartProductsQty: computed(() => store.state.cart.cartProductsQty)
+		}
 	}
 })
 </script>
@@ -31,8 +44,8 @@ export default defineComponent({
 	}
 
 	.header-top {
-			display: flex;
-			margin-bottom: 17px;
+		display: flex;
+		align-items: center;
 
 		.icon-heart-filled {
 			margin-left: auto;
@@ -41,6 +54,27 @@ export default defineComponent({
 
 		i {
 			font-size: 18px;
+			color: $color-white;
+			position: relative;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		.cart-qty {
+			width: 14px;
+			height: 14px;
+			background-color: $color-red;
+			border-radius: 14px;
+			display: inline-block;
+			font-size: 10px;
+			font-family: $font-family__primary;
+			line-height: 14px;
+			text-align: center;
+			position: absolute;
+			top: -5px;
+			right: -10px;
 		}
 	}
 </style>

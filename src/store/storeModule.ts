@@ -23,6 +23,14 @@ export const storeModule = {
 						label: 'Tradly Store',
 						products: ['1', '2', '3'],
 						href: '/store/tradly'
+					},
+					{
+						id: '2',
+						backgroundSrc: require('@/assets/images/store-groceries.png'),
+						avatarSrc: require('@/assets/images/groceries-avatar.png'),
+						label: 'Groceries store',
+						products: ['2', '3','4'],
+						href: '/store/groceries'
 					}
 				]
 

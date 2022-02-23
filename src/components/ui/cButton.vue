@@ -4,7 +4,9 @@
 		data-testid="button"
 		:class="['button', {
 							'button__transparent': styleType == 'transparent',
-							'button__small': styleType == 'small'
+							'button__small': styleType == 'small',
+							'button__small white': styleType == 'small-white',
+							'button__bottom': styleType == 'bottom'
 						}]">
 			<slot></slot>
 		</button>
@@ -50,6 +52,22 @@ export default defineComponent({
 			line-height: 14px;
 			color: $color-white;
 			padding: 4px 23px;
+
+			&.white {
+				background-color: $color-white;
+				color: $color-green;
+			}
+		}
+
+		&__bottom {
+			width: 100%;
+			font-size: 18px;
+			line-height: 18px;
+			font-weight: $font-weight__semibold;
+			background-color: $color-green;
+			border-radius: 24px;
+			padding: 15px;
+			color: $color-white;
 		}
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
 	<div class="products-new">
 			<div class="products-new__header">
-				<h2>New products</h2>
+				<h2>Popular products</h2>
 				<c-button styleType="small">See All</c-button>
 			</div>
 			<swiper 

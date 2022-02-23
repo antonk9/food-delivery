@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <router-view/>
+  <router-view />
   <Footer />
 </template>
 
@@ -8,6 +8,7 @@
 import { defineComponent } from 'vue';
 import Header from '@/components/header/Header.vue'
 import Footer from '@/components/Footer.vue'
+import { useStore } from 'vuex';
 
 
 export default defineComponent({
@@ -16,6 +17,15 @@ export default defineComponent({
     Header,
     Footer
   },
+
+  setup() {
+    const store = useStore();
+
+    store.dispatch('receiveStoreBannerItems')
+    store.dispatch('receiveProductCategories')
+    store.dispatch('stores/receiveStores')
+    store.dispatch('products/receiveProducts')
+  }
 });
 </script>
 
