@@ -18,9 +18,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "product" */ '@/views/Product.vue')
   },
   {
-    path: '/stores/',
+    path: '/stores',
     name: 'stores',
     component: () => import(/* webpackChunkName: "categories" */ '@/views/Stores.vue')
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: () => import(/* webpackChunkName: "cart" */ '@/views/Cart.vue')
   }
 ]
 

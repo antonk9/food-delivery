@@ -3,9 +3,11 @@
 		<div class="header-top">
 			<section-title title="Groceries" />
 			<i class="icon-heart-filled"></i>
-			<i class="icon-cart">
-				<span class="cart-qty" v-if="cartProductsQty">{{ cartProductsQty }}</span>
-			</i>
+			<router-link :to="{name: 'cart'}">
+				<i class="icon-cart">
+					<span class="cart-qty" v-if="cartProductsQty">{{ cartProductsQty }}</span>
+				</i>
+			</router-link>
 		</div>
 		<div class="header-bottom">
 			<search v-if="route.name == 'categories'" />

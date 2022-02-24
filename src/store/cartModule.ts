@@ -14,7 +14,15 @@ export const cartModule = {
 			state.cartProductsQty = payload
 		}
 	},
-	getters: {},
+	getters: {
+		getCartProducts(state, getters, rootState) {
+			return rootState.cart.cartProducts.map(item => {
+				const detailedProduct = rootState.products.products.find(el => el.id == item.productId ? el : false)
+
+				return {...item, ...detailedProduct}
+			})
+		}
+	},
 	actions:{
 		addToCart({ dispatch, commit, state }: { dispatch: Dispatch, commit: Commit, state: CartModuleType }, params: CartProduct ): void {
 			const cartProductIndex = state.cartProducts.findIndex(p => p.productId === params.productId)
@@ -27,6 +35,13 @@ export const cartModule = {
 				dispatch('recalculateTotalProductsQty', [...state.cartProducts, params])
 				commit('setCartProducts', [...state.cartProducts, params])
 			}
+		},
+		removeProduct({ dispatch, commit, state }, productId) {
+			const index = state.cartProducts.findIndex(item => item.productId == productId)
+			const updatedCartProducts = [...state.cartProducts]
+			updatedCartProducts.splice(index, 1)
+			commit('setCartProducts', updatedCartProducts)
+			dispatch('recalculateTotalProductsQty', updatedCartProducts)
 		},
 		recalculateTotalProductsQty({ commit }: { commit: Commit }, updatedQtyProducts: Array<CartProduct>): void {
 			const totalQty = updatedQtyProducts.reduce((sum, curr) => sum += curr.qty, 0)

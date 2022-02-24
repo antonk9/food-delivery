@@ -45,7 +45,7 @@ export default defineComponent({
 
 			router.push({
 				name: 'product',
-				params: {productId: productId}
+				params: { productId }
 			})
 		}
 
